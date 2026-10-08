@@ -10,7 +10,7 @@
 	.lottie-box2, .lottie-box3{display: none;}
 	#lottie-1{width: 100%; background: url("circle@1x-10fps.gif") no-repeat center; background-size:68% auto;}
 	#lottie-2{ width:100%;background: url("circle@1x-10fps.gif") no-repeat center; background-size:107% auto;}
-	#lottie-3{width: 100%; background: url("circle@1x-10fps.gif") no-repeat center -20%; background-size:107% auto;}
+	#lottie-3{width: 100%; max-width: 576px; background: url("circle@1x-10fps.gif") no-repeat center -20%; background-size:107% auto;}
 	@media (max-width: 768px) {
 		.lottie-box2{display: block;}
 		.lottie-box1, .lottie-box3{display: none;}
@@ -45,7 +45,7 @@
 						anim1.removeEventListener('loopComplete'); 
         });
 
-        // --- 1번 애니메이션 : 태블릿 ---
+        // --- 2번 애니메이션 : 태블릿 ---
         const anim2 = bodymovin.loadAnimation({
             container: document.getElementById('lottie-2'),
             renderer: 'svg',
@@ -53,8 +53,9 @@
             autoplay: true,
             path: 'Tablet_type.json'
         });
-        anim2.addEventListener('DOMLoaded', function() {
+        anim2.addEventListener('loopComplete', function() {
             anim2.playSegments([85, 786], true);
+						anim2.removeEventListener('loopComplete'); 
         });
 
         // --- 1번 애니메이션 : 모바일 ---
@@ -65,8 +66,9 @@
             autoplay: true,
             path: 'mo_type.json'
         });
-        anim3.addEventListener('DOMLoaded', function() {
+        anim3.addEventListener('loopComplete', function() {
             anim3.playSegments([85, 624], true);
+						anim3.removeEventListener('loopComplete'); 
         });
     </script>
 </body>
