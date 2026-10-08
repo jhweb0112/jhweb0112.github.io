@@ -2,11 +2,23 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>학습 유형 검사</title>
 <style type="text/css">
-	*{margin: 0; padding: 0;}	
-	#lottie-1{width: 100%; background: url("circle@1x-10fps.gif") no-repeat center; background-size:68% ahto; }
-	#lottie-2{width:1920px; background: url("circle@1x-10fps.gif") no-repeat center; background-size:68% ahto;}
+	*{margin: 0; padding: 0;}
+	.lottie-box1{display: block;}
+	.lottie-box2, .lottie-box3{display: none;}
+	#lottie-1{width: 100%; background: url("circle@1x-10fps.gif") no-repeat center; background-size:68% auto;}
+	#lottie-2{ width:100%;background: url("circle@1x-10fps.gif") no-repeat center; background-size:107% auto;}
+	#lottie-3{width: 100%; background: url("circle@1x-10fps.gif") no-repeat center -20%; background-size:107% auto;}
+	@media (max-width: 768px) {
+		.lottie-box2{display: block;}
+		.lottie-box1, .lottie-box3{display: none;}
+	}
+	@media (max-width: 576px) {
+		.lottie-box3{display: block;}
+		.lottie-box1, .lottie-box2{display: none;}		
+	}
 </style>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.11/lottie.min.js"></script>
 	<script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
@@ -15,33 +27,46 @@
 
 <body style="background: #fff;">
  <!-- 애니메이션이 들어갈 개별 컨테이너 -->
-    <div id="lottie-1" class="lottie-box"></div>
-    <div id="lottie-2" class="lottie-box"></div>
+    <a href="#" class="lottie-box1"><p>PC</p><div id="lottie-1"></div></a>
+    <a href="#" class="lottie-box2"><p>태블릿</p><div id="lottie-2"></div></a>
+    <a href="#" class="lottie-box3"><p>모바일</p><div id="lottie-3"></div></a>
 
     <script>
-        // --- 1번 애니메이션 설정 (예: 0~30프레임 반복) ---
+        // --- 1번 애니메이션 : PC ---
         const anim1 = bodymovin.loadAnimation({
             container: document.getElementById('lottie-1'),
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'PC_type_new.json'
+            path: 'PC_type.json'
         });
         anim1.addEventListener('loopComplete', function() {
-            anim1.playSegments([85, 787], true);
+            anim1.playSegments([85, 786], true);
 						anim1.removeEventListener('loopComplete'); 
         });
 
-        // --- 2번 애니메이션 설정 (예: 40~90프레임 반복) ---
+        // --- 1번 애니메이션 : 태블릿 ---
         const anim2 = bodymovin.loadAnimation({
             container: document.getElementById('lottie-2'),
             renderer: 'svg',
             loop: true,
             autoplay: false,
-            path: 'PC_type_new.json'
+            path: 'Tablet_type.json'
         });
         anim2.addEventListener('DOMLoaded', function() {
-            anim2.playSegments([85, 787], true);
+            anim2.playSegments([85, 786], true);
+        });
+
+        // --- 1번 애니메이션 : 모바일 ---
+        const anim3 = bodymovin.loadAnimation({
+            container: document.getElementById('lottie-3'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'mo_type.json'
+        });
+        anim3.addEventListener('DOMLoaded', function() {
+            anim3.playSegments([85, 624], true);
         });
     </script>
 </body>
