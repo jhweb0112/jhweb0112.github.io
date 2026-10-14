@@ -5,15 +5,29 @@
 <title>수학 연산 마스터</title>
 <style type="text/css">
 	*{margin: 0; padding: 0;}	
-	#myVideo{width: 100%;}
+	.Video_P{width: 100%;}
+	.Video_T{width: 100%; max-width: 960px;}
+	.Video_M{width: 100%; max-width: 420px;}
+	p{padding-top:40px; font-size:30px;}
 </style>
 </head>
 
 <body style="background: fff;">
-<video id="myVideo" src="purunet_math_PC_loop.mp4" autoplay muted playsinline></video>
+	
+<p>태블릿&amp;모바일 사이즈: 배너 위의 여백은 GNB 공간 입니다.</p>
+<video class="Video_T" src="purunet_math_T_loop.mp4" autoplay muted playsinline></video>
+<video class="Video_M" src="purunet_math_M_loop.mp4" autoplay muted playsinline></video>
+<p>PC</p>
+<video class="Video_P" src="purunet_math_PC_loop.mp4" autoplay muted playsinline></video>
 <script>
-  const v = document.getElementById('myVideo');
-  v.addEventListener('ended', () => { v.currentTime = 8; v.play(); });
+  const videos  = document.querySelectorAll('video');
+	// 각 비디오 요소에 반복문을 돌며 이벤트를 추가합니다.
+	videos.forEach((v) => {
+		v.addEventListener('ended', () => {
+			v.currentTime = 8; // 8초 위치로 이동
+			v.play();           // 다시 재생
+		});
+	});
 </script>
 
 </body>
